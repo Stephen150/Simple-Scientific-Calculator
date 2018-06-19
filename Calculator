@@ -91,7 +91,8 @@ class Calculator:
 			sum_up = str(eval(self.expression))
 			text_Input.set(sum_up)
 			self.expression = ""
-			
+
+# tkinter layout
 root = tk.Tk()
 b = Calculator(root)
 root.title("Scientific Calculator")
