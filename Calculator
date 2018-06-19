@@ -1,14 +1,15 @@
 # Citation: Used this tutorial as a general guide for approaching the app -> https://www.youtube.com/watch?v=SvaUmPeNB6k
 import tkinter as tk
+from math import *
 
 class Calculator:
 	def __init__(self, master):
 		self.expression = ""
 		text_Input = tk.StringVar()
 		self.master = master
-		top_frame = tk.Frame(master, width = 300, height = 20, bd=4, relief = 'raise')
+		top_frame = tk.Frame(master, width=300,height = 20, bd=4, relief = 'raise')
 		top_frame.pack(side=tk.TOP)
-		bottom_frame = tk.Frame(master, width = 300, height = 300, bd=4, relief = 'raise')
+		bottom_frame = tk.Frame(master, width=300, height = 600, bd=4, relief = 'raise')
 		bottom_frame.pack(side=tk.BOTTOM)
 		txtDisplay = tk.Entry(top_frame, font=('arial',18,'bold'),textvariable = text_Input,width = 21,bd=4,justify = 'right')
 		txtDisplay.pack()
@@ -47,18 +48,42 @@ class Calculator:
 		btn0 = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
 		text="0",command=lambda:btnClick(0)).grid(row=3,column=0)
 		btn_clear = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
-		text="C",command=lambda:btnClear()).grid(row=3,column=1)
+		text="C",command=lambda:btnClearAll()).grid(row=3,column=1)
 		btnEq = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
 		text="=",command=lambda:btnEqual()).grid(row=3,column=2)
 		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='black', font=('arial', 18, 'bold'), width=2, height=2,
 		text="/",command=lambda:btnClick('/')).grid(row=3, column=3)
 		
+		# row 4
+		btn_sqrt = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
+		text="sqrt",command=lambda:btnClick('sqrt(')).grid(row=4,column=0)
+		btn_exp = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
+		text="pow",command=lambda:btnClick('pow(')).grid(row=4,column=1)
+		btn_left_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='black', font=('arial', 18, 'bold'),width=2, height=2,
+		text="(", command=lambda: btnClick('(')).grid(row=4, column=2)
+		btn_right_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='black', font=('arial', 18, 'bold'), width=2, height=2,
+		text=")",command=lambda:btnClick(')')).grid(row=4, column=3)
+		
+		# row 5
+		btn_del = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
+		text="del",command=lambda:btnClear1()).grid(row=5,column=0)
+		btn_sine = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='black',font =('arial',18,'bold'),width=2,height=2,
+		text="sine",command=lambda:btnClick('sin(')).grid(row=5,column=1)
+		btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='black', font=('arial', 18, 'bold'),width=2, height=2,
+		text="cos", command=lambda: btnClick('cos(')).grid(row=5, column=2)
+		btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='black', font=('arial', 18, 'bold'), width=2, height=2,
+		text="tan",command=lambda:btnClick('tan(')).grid(row=5, column=3)
+
 		# functions
-		def btnClick(numbers):
-			self.expression = self.expression + str(numbers)
+		def btnClick(expression_val):
+			self.expression = self.expression + str(expression_val)
 			text_Input.set(self.expression)
 			
-		def btnClear():
+		def btnClear1():
+			self.expression = self.expression[:-1]
+			text_Input.set(self.expression)
+			
+		def btnClearAll():
 			self.expression = ""
 			text_Input.set("")
 		
@@ -69,7 +94,7 @@ class Calculator:
 			
 root = tk.Tk()
 b = Calculator(root)
-root.title("Functional Calculator")
-root.geometry("300x390+50+50")
+root.title("Scientific Calculator")
+root.geometry("300x620+50+50")
 root.resizable(True,True)
 root.mainloop()
