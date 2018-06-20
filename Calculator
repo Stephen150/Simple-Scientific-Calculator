@@ -7,9 +7,9 @@ class Calculator:
 		self.expression = ""
 		text_Input = tk.StringVar()
 		self.master = master
-		top_frame = tk.Frame(master, width=300,height = 20, bd=4, relief = 'raise')
+		top_frame = tk.Frame(master, width=350,height = 20, bd=4, relief = 'raise')
 		top_frame.pack(side=tk.TOP)
-		bottom_frame = tk.Frame(master, width=300, height = 600, bd=4, relief = 'raise')
+		bottom_frame = tk.Frame(master, width=400, height = 600, bd=4, relief = 'raise')
 		bottom_frame.pack(side=tk.BOTTOM)
 		txtDisplay = tk.Entry(top_frame, font=('arial',18,'bold'),textvariable = text_Input,width = 21,bd=4,justify = 'right')
 		txtDisplay.pack()
@@ -96,6 +96,6 @@ class Calculator:
 root = tk.Tk()
 b = Calculator(root)
 root.title("Scientific Calculator")
-root.geometry("300x620+50+50")
+root.geometry("400x620+50+50")
 root.resizable(True,True)
 root.mainloop()
