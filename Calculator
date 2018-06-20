@@ -114,7 +114,7 @@ class Calculator:
 		text="n!",relief='flat',command=lambda:btnClick('factorial(')).grid(row=4,column=0)
 
 		btn_sqr = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="x^2",relief='flat',command=lambda:btnClick('**2')).grid(row=4,column=1) # TODO: Make method
+		text=u"x\u00B2",relief='flat',command=lambda:btnClick('**2')).grid(row=4,column=1) # TODO: Make method
 
 		btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
 		text="x^y",relief='flat', command=lambda: btnClick('**')).grid(row=4, column=2) # TODO: Make method
