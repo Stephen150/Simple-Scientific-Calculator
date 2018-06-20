@@ -14,7 +14,7 @@ class Calculator:
 		bottom_frame = tk.Frame(master, width=650, height = 470, bd=4, relief='flat',bg = '#666666')
 		bottom_frame.pack(side=tk.BOTTOM)
 		# name of calculator
-		my_item = tk.Label(top_frame,text="Stephen's Scientific Calculator", font=('arial',12),fg='white',width=26,bg = '#666666')
+		my_item = tk.Label(top_frame,text="Simple Scientific Calculator", font=('arial',14),fg='white',width=26,bg = '#666666')
 		my_item.pack()
 		# entry box for inputs
 		txtDisplay = tk.Entry(top_frame,font=('arial',36),relief='flat',bg = '#666666',fg='white',textvariable = text_Input,width=60,bd=4,justify = 'right')
@@ -178,7 +178,7 @@ class Calculator:
 # tkinter layout
 root = tk.Tk()
 b = Calculator(root)
-root.title("Scientific Calculator")
+root.title("Simple Scientific Calculator")
 root.geometry("650x485+50+50")
 root.resizable(True,True)
 root.mainloop()
