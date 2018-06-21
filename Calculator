@@ -39,8 +39,9 @@ class Calculator:
 		width=2, height=2,relief='flat',text="+/-", command=lambda: change_signs()).grid(row=0, column=6)
 		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="÷",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
-		btn_modulus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat', text="%", command=lambda: btnClick('%')).grid(row=0, column=8)
+		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
+
 
 		# row 1
 		btn_Deg = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
@@ -59,8 +60,8 @@ class Calculator:
 		text="9",relief='flat', command=lambda: btnClick(9)).grid(row=1, column=6)
 		btn_mult = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="x", command=lambda: btnClick('*')).grid(row=1, column=7)
-		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=1, column=8)
+		btn_MC = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="MC",relief='flat',command=lambda:memory_clear()).grid(row=1,column=8)
 
 		# row 2
 		btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
@@ -69,10 +70,8 @@ class Calculator:
 		text="cos",relief='flat', command=lambda: btnClick('cos(' + self.convert_constant)).grid(row=2, column=1)
 		btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="tan", command=lambda: btnClick('tan(' + self.convert_constant)).grid(row=2, column=2)
-
 		btn_reciprocal = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
 		text="1/x",relief='flat',command=lambda:recip()).grid(row=2, column=3) # TODO: Make method
-
 		btn4 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
 		text="4",relief='flat', command=lambda: btnClick(4)).grid(row=2, column=4)
 		btn5 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
@@ -81,8 +80,8 @@ class Calculator:
 		text="6",relief='flat', command=lambda: btnClick(6)).grid(row=2, column=6)
 		btnSub = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
 		text="-",relief='flat',command=lambda:btnClick('-')).grid(row=2,column=7)
-		btn_MC = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="MC",relief='flat',command=lambda:memory_clear()).grid(row=2,column=8)
+		btn_MR = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="MR",relief='flat', command=lambda: memory_recall()).grid(row=2, column=8)
 		
 		# row 3
 		btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
@@ -103,6 +102,8 @@ class Calculator:
 		text="+",relief='flat', command=lambda: btnClick('+')).grid(row=3, column=7)
 		btn_MR = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
 		text="MR",relief='flat', command=lambda: memory_recall()).grid(row=3, column=8)
+		btn_M_plus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text="M+",relief='flat', command=lambda: memory_add()).grid(row=3, column=8)
 		
 		# row 4
 		btn_fact = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
@@ -120,8 +121,8 @@ class Calculator:
 		text="=",relief='flat',command=lambda:btnEqual()).grid(row=4, column=6)
 		btn_dec = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
 		text=".",relief='flat', command=lambda: btnClick('.')).grid(row=4, column=7)
-		btn_M_plus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="M+",relief='flat', command=lambda: memory_add()).grid(row=4, column=8)
+		btn_comma = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text=",",relief='flat', command=lambda: btnClick(',')).grid(row=4, column=8)
 
 		# functions
 		def btnClick(expression_val):
@@ -179,3 +180,4 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
+
