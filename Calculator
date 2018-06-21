@@ -6,7 +6,7 @@ class Calculator:
 	def __init__(self, master):
 		self.expression = ""
 		self.recall = ""
-		convert_constant = 1
+		self.convert_constant = ""
 		text_Input = tk.StringVar()
 		self.master = master
 		# set frame showing inputs and title
@@ -30,7 +30,7 @@ class Calculator:
 		btn_exp = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="exp", command=lambda: btnClick('exp(')).grid(row=0, column=2)
 		btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat', text="ฯ€", command=lambda: btnClick('pi')).grid(row=0, column=3)
+		width=2, height=2,relief='flat', text="π", command=lambda: btnClick('pi')).grid(row=0, column=3)
 		btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="C",relief='flat', command=lambda: btnClearAll()).grid(row=0, column=4)
 		btn_del = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
@@ -38,20 +38,19 @@ class Calculator:
 		btn_change_sign = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
 		width=2, height=2,relief='flat',text="+/-", command=lambda: change_signs()).grid(row=0, column=6)
 		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="รท",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
+		height=2,text="÷",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
 		btn_modulus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
 		width=2, height=2,relief='flat', text="%", command=lambda: btnClick('%')).grid(row=0, column=8)
 
 		# row 1
 		btn_Deg = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="Deg",relief='flat', command=lambda: convert_deg()).grid(row=1, column=0) #TODO
+		text="Deg",relief='flat', command=lambda: convert_deg()).grid(row=1, column=0)
 		btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="Rad",relief='flat', command=lambda: convert_rad()).grid(row=1, column=1) #TODO
+		height=2,text="Rad",relief='flat', command=lambda: convert_rad()).grid(row=1, column=1)
 		btn_Grad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="Grad",relief='flat', command=lambda:convert_grad()).grid(row=1, column=2) #TODO
-
+		text="Grad",relief='flat', command=lambda:convert_grad()).grid(row=1, column=2)
 		btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat', text="abs", command=lambda: btnClick('fabs' + '(')).grid(row=1, column=3)
+		height=2,relief='flat', text="abs", command=lambda: btnClick('abs' + '(')).grid(row=1, column=3)
 		btn_7 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
 		text="7", relief='flat',command=lambda: btnClick(7)).grid(row=1, column=4)
 		btn_8 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
@@ -65,11 +64,11 @@ class Calculator:
 
 		# row 2
 		btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin",relief='flat',command=lambda:btnClick('sin(')).grid(row=2,column=0)
+		text="sin",relief='flat',command=lambda:btnClick('sin(' + self.convert_constant)).grid(row=2,column=0)
 		btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="cos",relief='flat', command=lambda: btnClick('cos(')).grid(row=2, column=1)
+		text="cos",relief='flat', command=lambda: btnClick('cos(' + self.convert_constant)).grid(row=2, column=1)
 		btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="tan", command=lambda: btnClick('tan(')).grid(row=2, column=2)
+		height=2,relief='flat',text="tan", command=lambda: btnClick('tan(' + self.convert_constant)).grid(row=2, column=2)
 
 		btn_reciprocal = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
 		text="1/x",relief='flat',command=lambda:recip()).grid(row=2, column=3) # TODO: Make method
@@ -87,17 +86,13 @@ class Calculator:
 		
 		# row 3
 		btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin^-1",relief='flat',command=lambda:btnClick()).grid(row=3,column=0) # TODO: Make method
-
+		text="sin^-1",relief='flat',command=lambda:btnClick(self.convert_constant + 'asin(')).grid(row=3,column=0) # TODO: Make method
 		btn_cos_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="cos^-1",relief='flat',command=lambda:btnClick()).grid(row=3,column=1) # TODO: Make method
-
+		text="cos^-1",relief='flat',command=lambda:btnClick(self.convert_constant +'acos(')).grid(row=3,column=1) # TODO: Make method
 		btn_tan_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="tan^-1",relief='flat',command=lambda:btnClick()).grid(row=3,column=2) # TODO: Make method
-
+		text="tan^-1",relief='flat',command=lambda:btnClick(self.convert_constant + 'atan(')).grid(row=3,column=2) # TODO: Make method
 		btn_ln = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
 		text="ln",relief='flat',command=lambda:btnClick('log1p(')).grid(row=3,column=3) # TODO: Make method
-
 		btn1 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
 		text="1",relief='flat', command=lambda: btnClick(1)).grid(row=3, column=4)
 		btn2 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
@@ -117,7 +112,7 @@ class Calculator:
 		btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
 		text="x^y",relief='flat', command=lambda: btnClick('**')).grid(row=4, column=2)
 		btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="log",relief='flat',command=lambda:btnClick(log())).grid(row=4,column=3)
+		text="log",relief='flat',command=lambda:btnClick('log(')).grid(row=4,column=3)
 		btn_0 = tk.Button(bottom_frame, padx=16, pady=1, bd=5, fg='white',bg = '#4d4d4d', font=('arial', 18),width=7, height=2,
 		text="0",relief='flat', command=lambda: btnClick(0))
 		btn_0.grid(row=4, column=4,columnspan=2)
@@ -154,19 +149,19 @@ class Calculator:
 				text_Input.set(self.expression + self.recall)
 
 		def recip():
-			# FIX
-			recip_val = '(1/ ' + self.expression[-1] + ')'
-			self.expression = self.expression[:-1] + recip_val
+			recip_val = '(1/ ' + self.expression
+			self.expression = recip_val
 			text_Input.set(self.expression)
 
 		def convert_deg():
-			convert_constant = 180/pi
-				
-		def convert_grad():
-			convert_constant = 63
-				
+			self.convert_constant = '(radians('
+		
 		def convert_rad():
-			convert_constant = 1
+			self.convert_constant = ""
+
+		def convert_grad():
+			grad = '(200/pi)*'
+			self.convert_constant = grad
 			
 		def btnClearAll():
 			self.expression = ""
