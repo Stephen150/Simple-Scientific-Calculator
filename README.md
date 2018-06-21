@@ -17,7 +17,7 @@ from math import *
 
 ### Installing
 
-Download any Python 3 IDE and run the code, or download it from my source
+Download any Python 3 IDE and run the code, or you can clone/download it from the homepage of the project.
 
 End with an example of getting some data out of the system or using it for a little demo
 
