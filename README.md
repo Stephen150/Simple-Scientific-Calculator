@@ -42,3 +42,6 @@ Message me about any suggestions or ways to make the code more efficient and I'd
 This project is not licensed although you do have to cite this work if you are using it for academic purposes or deriving from the script directly
 
 ## Acknowledgments
+
+Citation: Used this tutorial as a general guide for approaching the app -> https://www.youtube.com/watch?v=SvaUmPeNB6k
+Also, I learned a good deal of tkinter just from this tutorial alone. I would recommend it to anybody wanting to start out!
