@@ -9,6 +9,8 @@ class Calculator:
 		self.recall = ""
 		# used to switch between units of rad,deg and grad
 		self.convert_constant = ""
+		# self.answer
+		self.sum_up = ""
 		# create string for text input
 		text_Input = tk.StringVar()
 		# assign instance to master
@@ -38,19 +40,19 @@ class Calculator:
 		height=2,relief='flat',text="exp", command=lambda: btnClick('exp(')).grid(row=0, column=2)
 		# constant pi
 		btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat', text="ฯ€", command=lambda: btnClick('pi')).grid(row=0, column=3)
+		width=2, height=2,relief='flat', text="π", command=lambda: btnClick('pi')).grid(row=0, column=3)
 		# clears self.expression
 		btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="C",relief='flat', command=lambda: btnClearAll()).grid(row=0, column=4)
 		# deletes last string input
 		btn_del = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="del",relief='flat', command=lambda: btnClear1()).grid(row=0, column=5)
-		# inputs a negative sign to the next entry (CHANGE TO ANS??)
+		# inputs a negative sign to the next entry
 		btn_change_sign = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
 		width=2, height=2,relief='flat',text="+/-", command=lambda: change_signs()).grid(row=0, column=6)
 		# division
 		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="รท",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
+		height=2,text="÷",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
 		# square root
 		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
@@ -95,9 +97,9 @@ class Calculator:
 		# tan function
 		btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="tan", command=lambda: btnClick('tan(' + self.convert_constant)).grid(row=2, column=2)
-		# takes entire expression's reciprocal value
-		btn_reciprocal = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="1/x",relief='flat',command=lambda:recip()).grid(row=2, column=3)
+		#
+		btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="log",relief='flat',command=lambda:btnClick('log(')).grid(row=2,column=3)
 		# four
 		btn4 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
 		text="4",relief='flat', command=lambda: btnClick(4)).grid(row=2, column=4)
@@ -153,9 +155,9 @@ class Calculator:
 		# to the power of function
 		btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
 		text="x^y",relief='flat', command=lambda: btnClick('**')).grid(row=4, column=2)
-		# takes the first parameter to the base of the second parameter
-		btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="log",relief='flat',command=lambda:btnClick('log(')).grid(row=4,column=3)
+		# stores previous expression as an answer value
+		btn_ans = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="ans",relief='flat',command=lambda:answer()).grid(row=4, column=3)
 		# zero
 		btn_0 = tk.Button(bottom_frame, padx=16, pady=1, bd=5, fg='white',bg = '#4d4d4d', font=('arial', 18),width=7, height=2,
 		text="0",relief='flat', command=lambda: btnClick(0))
@@ -190,16 +192,15 @@ class Calculator:
 		def memory_add():
 			self.recall = self.recall + '+' + self.expression
 		# uses whatever is stored in memory_recall
+		def answer():
+			self.answer = self.sum_up
+			text_Input.set(self.expression + self.answer)
+		# uses whatever is stored in memory_recall
 		def memory_recall():
 			if self.expression == "":
 				text_Input.set('0' + self.expression + self.recall)
 			else:
 				text_Input.set(self.expression + self.recall)
-		# reciprocal function
-		def recip():
-			recip_val = '(1/ ' + self.expression
-			self.expression = recip_val
-			text_Input.set(self.expression)
 		# changes self.convert_constant to a string that allows degree conversion when button is clicked
 		def convert_deg():
 			self.convert_constant = '(radians('
@@ -216,8 +217,8 @@ class Calculator:
 			text_Input.set("")
 		# converts self.expression into a mathematical expression and evaluates it
 		def btnEqual():
-			sum_up = str(eval(self.expression))
-			text_Input.set(sum_up)
+			self.sum_up = str(eval(self.expression))
+			text_Input.set(self.sum_up)
 			self.expression = ""
 
 # tkinter layout
@@ -227,3 +228,4 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
+
