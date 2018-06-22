@@ -35,7 +35,7 @@ Message me about any suggestions or ways to make the code more efficient and I'd
 
 ## Authors
 
-* **Stephen Chavez** - *Initial work* - [Stephen150](https://github.com/Stephen150)
+* **Stephen Chavez** - *Complete Development* - [Stephen150](https://github.com/Stephen150)
 
 ## License
 
