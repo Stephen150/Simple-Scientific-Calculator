@@ -19,14 +19,6 @@ from math import *
 
 Download any Python 3 IDE and run the code, or you can clone/download it from the homepage of the project.
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-### Break down into end to end tests
-
-### And coding style tests
-
 ## Deployment
 
 Run the code
@@ -39,7 +31,7 @@ Run the code
 
 ## Contributing
 
-## Versioning
+Message me about any suggestions or ways to make the code more efficient and I'd be happy to listen.
 
 ## Authors
 
