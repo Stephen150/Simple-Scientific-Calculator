@@ -41,7 +41,7 @@ class Calculator:
 		height=2,relief='flat',text="exp", command=lambda: btnClick('exp(')).grid(row=0, column=2)
 		# constant pi
 		btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat', text="ฯ€", command=lambda: btnClick('pi')).grid(row=0, column=3)
+		width=2, height=2,relief='flat', text="π", command=lambda: btnClick('pi')).grid(row=0, column=3)
 		# clears self.expression
 		btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="C",relief='flat', command=lambda: btnClearAll()).grid(row=0, column=4)
@@ -53,7 +53,7 @@ class Calculator:
 		width=2, height=2,relief='flat',text="+/-", command=lambda: change_signs()).grid(row=0, column=6)
 		# division
 		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="รท",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
+		height=2,text="÷",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
 		# square root
 		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
@@ -67,7 +67,7 @@ class Calculator:
 		height=2,text="Rad",relief='flat', command=lambda: convert_rad()).grid(row=1, column=1)
 		# changes trig function outputs to gradians
 		btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="xโ ",relief='flat', command=lambda:btnClick('**(1/')).grid(row=1, column=2)
+		text="x√ ",relief='flat', command=lambda:btnClick('**(1/')).grid(row=1, column=2)
 		# takes the absolute value of an expression
 		btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat', text="abs", command=lambda: btnClick('abs' + '(')).grid(row=1, column=3)
