@@ -8,6 +8,7 @@ class Calculator:
 		# be used to store data in memory
 		self.recall = ""
 		# used to switch between units of rad,deg and grad
+		self.inv_convert_constant = ""
 		self.convert_constant = ""
 		# self.answer
 		self.sum_up = ""
@@ -56,7 +57,6 @@ class Calculator:
 		# square root
 		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
-
 
 		# row 1
 		# changes trig function outputs to degrees
@@ -119,13 +119,13 @@ class Calculator:
 		# row 3
 		# sin inverse function
 		btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin^-1",relief='flat',command=lambda:btnClick(self.convert_constant + 'asin(')).grid(row=3,column=0)
+		text="sin^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'asin(')).grid(row=3,column=0)
 		# cos inverse function
 		btn_cos_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="cos^-1",relief='flat',command=lambda:btnClick(self.convert_constant +'acos(')).grid(row=3,column=1) 
+		text="cos^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'acos(')).grid(row=3,column=1)
 		# tan inverse function
 		btn_tan_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="tan^-1",relief='flat',command=lambda:btnClick(self.convert_constant + 'atan(')).grid(row=3,column=2) 
+		text="tan^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'atan(')).grid(row=3,column=2)
 		# takes the natural log
 		btn_ln = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
 		text="ln",relief='flat',command=lambda:btnClick('log1p(')).grid(row=3,column=3) 
@@ -203,6 +203,7 @@ class Calculator:
 				text_Input.set(self.expression + self.recall)
 		# changes self.convert_constant to a string that allows degree conversion when button is clicked
 		def convert_deg():
+			self.inv_convert_constant = "degrees("
 			self.convert_constant = '(radians('
 		# allows self.convert_constant to be empty so that it defaults back to radians
 		def convert_rad():
@@ -225,4 +226,3 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
-
