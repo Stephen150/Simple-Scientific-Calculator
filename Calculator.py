@@ -7,9 +7,6 @@ class Calculator:
 		self.expression = ""
 		# be used to store data in memory
 		self.recall = ""
-		
-		self.sin_rad = sin
-
 		# used to switch between units of rad,deg and grad
 		self.convert_constant = 1
 		# self.answer
@@ -112,7 +109,7 @@ class Calculator:
 		# row 2
 		# sin function that returns value from -1 to 1 by default
 		self.btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin",relief='flat',activebackground="#666666",command=lambda:self.btnClick('sin('))
+		text="sin",relief='flat',activebackground="#666666",command=lambda:self.btnClick('fsin('))
 		self.btn_sin.grid(row=2,column=0)
 		# cos function that returns value from -1 to 1 by default
 		self.btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
@@ -231,8 +228,8 @@ class Calculator:
 		# adds in a negative sign
 
 
-	def sin(self,arg):
-		return self.sin_rad(arg * self.convert_constant)
+	def fsin(self,arg):
+		return sin(arg * self.convert_constant)
 
 			
 	def change_signs(self):
@@ -280,5 +277,6 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
+
 
 
