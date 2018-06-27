@@ -8,7 +8,6 @@ class Calculator:
 		# be used to store data in memory
 		self.recall = ""
 		# used to switch between units of rad,deg and grad
-		self.inv_convert_constant = ""
 		self.convert_constant = ""
 		# self.answer
 		self.sum_up = ""
@@ -68,6 +67,7 @@ class Calculator:
 		self.btn_sqrt.grid(row=0, column=8)
 
 		# row 1
+
 		# changes trig function outputs to degrees
 		self.btn_Deg = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
 		text="Deg",relief='flat',activebackground="#666666",foreground='white',activeforeground = 'orange', command=lambda:convert_deg())
@@ -76,6 +76,7 @@ class Calculator:
 		self.btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
 		height=2,text="Rad",relief='flat',foreground='orange',activeforeground = 'orange',activebackground="#666666", command=lambda:convert_rad())
 		self.btn_Rad.grid(row=1, column=1)
+
 		# changes trig function outputs to gradians
 		self.btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
 		text="xโ ",relief='flat',activebackground="#666666", command=lambda:btnClick('**(1/'))
@@ -108,7 +109,7 @@ class Calculator:
 		# row 2
 		# sin function that returns value from -1 to 1 by default
 		self.btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin",relief='flat',activebackground="#666666",command=lambda:btnClick('sin(' + self.convert_constant))
+		text="sin",relief='flat',activebackground="#666666",command=lambda:btnClick('sin('))
 		self.btn_sin.grid(row=2,column=0)
 		# cos function that returns value from -1 to 1 by default
 		self.btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
@@ -225,6 +226,12 @@ class Calculator:
 			self.expression = self.expression[:-1]
 			text_Input.set(self.expression)
 		# adds in a negative sign
+
+		def sin(arg):
+			import math
+			# self.expression = self.expression + str(math.sin(self.convert_constant * arg))
+			return math.sin(self.convert_constant * arg)
+
 		def change_signs():
 			self.expression = self.expression + '-'
 			text_Input.set(self.expression)
@@ -246,6 +253,7 @@ class Calculator:
 				text_Input.set(self.expression + self.recall)
 		# changes self.convert_constant to a string that allows degree conversion when button is clicked
 		def convert_deg():
+			self.convert_constant = pi/180
 			self.btn_Rad["foreground"] = 'white'
 			self.btn_Deg["foreground"] = 'orange'
 		def convert_rad():
