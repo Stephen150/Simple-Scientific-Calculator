@@ -229,7 +229,6 @@ class Calculator:
 
 		def sin(arg):
 			import math
-			# self.expression = self.expression + str(math.sin(self.convert_constant * arg))
 			return math.sin(self.convert_constant * arg)
 
 		def change_signs():
@@ -276,4 +275,5 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
+
 
