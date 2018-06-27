@@ -31,146 +31,146 @@ class Calculator:
 
 		# row 0 
 		# left bracket button
-		btn_left_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="(",relief='flat', command=lambda: btnClick('(')).grid(row=0, column=0)
+		self.btn_left_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text="(",relief='flat',activebackground="#666666",command=lambda: btnClick('(')).grid(row=0, column=0)
 		# right bracket button
-		btn_right_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat',text=")", command=lambda: btnClick(')')).grid(row=0, column=1)
+		self.btn_right_brack = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
+		width=2, height=2,relief='flat',text=")",activebackground="#666666", command=lambda: btnClick(')')).grid(row=0, column=1)
 		# takes e to some exponent that you insert into the function
-		btn_exp = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="exp", command=lambda: btnClick('exp(')).grid(row=0, column=2)
+		self.btn_exp = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat',text="exp",activebackground="#666666", command=lambda: btnClick('exp(')).grid(row=0, column=2)
 		# constant pi
-		btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat', text="π", command=lambda: btnClick('pi')).grid(row=0, column=3)
+		self.btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
+		width=2, height=2,relief='flat',activebackground="#666666", text="ฯ€", command=lambda: btnClick('pi')).grid(row=0, column=3)
 		# clears self.expression
-		btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="C",relief='flat', command=lambda: btnClearAll()).grid(row=0, column=4)
+		self.btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,text="C",relief='flat',activebackground="#666666", command=lambda: btnClearAll()).grid(row=0, column=4)
 		# deletes last string input
-		btn_del = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="del",relief='flat', command=lambda: btnClear1()).grid(row=0, column=5)
+		self.btn_del = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,text="del",relief='flat',activebackground="#666666", command=lambda: btnClear1()).grid(row=0, column=5)
 		# inputs a negative sign to the next entry
-		btn_change_sign = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
-		width=2, height=2,relief='flat',text="+/-", command=lambda: change_signs()).grid(row=0, column=6)
+		self.btn_change_sign = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),
+		width=2, height=2,relief='flat',text="+/-",activebackground="#666666", command=lambda: change_signs()).grid(row=0, column=6)
 		# division
-		btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="÷",relief='flat', command=lambda: btnClick('/')).grid(row=0, column=7)
+		self.btn_div = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,text="รท",relief='flat',activebackground="#666666", command=lambda: btnClick('/')).grid(row=0, column=7)
 		# square root
-		btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="sqrt", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
+		self.btn_sqrt = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat',text="sqrt",activebackground="#666666", command=lambda: btnClick('sqrt(')).grid(row=0, column=8)
 
 		# row 1
 		# changes trig function outputs to degrees
-		btn_Deg = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="Deg",relief='flat', command=lambda: convert_deg()).grid(row=1, column=0)
+		self.btn_Deg = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="Deg",relief='flat',activebackground="#666666",foreground='white',activeforeground = 'orange', command=lambda: convert_deg()).grid(row=1, column=0)
 		# changes trig function outputs to default back to radians
-		btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,text="Rad",relief='flat', command=lambda: convert_rad()).grid(row=1, column=1)
+		self.btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,text="Rad",relief='flat',foreground='orange',activeforeground = 'orange',activebackground="#666666", command=lambda: convert_rad()).grid(row=1, column=1)
 		# changes trig function outputs to gradians
-		btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="x√ ",relief='flat', command=lambda:btnClick('**(1/')).grid(row=1, column=2)
+		self.btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="xโ ",relief='flat',activebackground="#666666", command=lambda:btnClick('**(1/')).grid(row=1, column=2)
 		# takes the absolute value of an expression
-		btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat', text="abs", command=lambda: btnClick('abs' + '(')).grid(row=1, column=3)
+		self.btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat', text="abs",activebackground="#666666", command=lambda: btnClick('abs' + '(')).grid(row=1, column=3)
 		# seven
-		btn_7 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="7", relief='flat',command=lambda: btnClick(7)).grid(row=1, column=4)
+		self.btn_7 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="7", relief='flat',activebackground="#4d4d4d",command=lambda: btnClick(7)).grid(row=1, column=4)
 		# eight
-		btn_8 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="8",relief='flat', command=lambda: btnClick(8)).grid(row=1, column=5)
+		self.btn_8 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="8",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(8)).grid(row=1, column=5)
 		# nine
-		btn_9 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="9",relief='flat', command=lambda: btnClick(9)).grid(row=1, column=6)
+		self.btn_9 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="9",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(9)).grid(row=1, column=6)
 		# multiplication
-		btn_mult = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="x", command=lambda: btnClick('*')).grid(row=1, column=7)
+		self.btn_mult = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat',text="x",activebackground="#666666", command=lambda: btnClick('*')).grid(row=1, column=7)
 		# 'memory clear' button. Wipes self.recall to an empty string
-		btn_MC = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="MC",relief='flat',command=lambda:memory_clear()).grid(row=1,column=8)
+		self.btn_MC = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="MC",relief='flat',activebackground="#666666",command=lambda:memory_clear()).grid(row=1,column=8)
 
 		# row 2
 		# sin function that returns value from -1 to 1 by default
-		btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin",relief='flat',command=lambda:btnClick('sin(' + self.convert_constant)).grid(row=2,column=0)
+		self.btn_sin = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="sin",relief='flat',activebackground="#666666",command=lambda:btnClick('sin(' + self.convert_constant)).grid(row=2,column=0)
 		# cos function that returns value from -1 to 1 by default
-		btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="cos",relief='flat', command=lambda: btnClick('cos(' + self.convert_constant)).grid(row=2, column=1)
+		self.btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text="cos",relief='flat',activebackground="#666666", command=lambda: btnClick('cos(' + self.convert_constant)).grid(row=2, column=1)
 		# tan function
-		btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',text="tan", command=lambda: btnClick('tan(' + self.convert_constant)).grid(row=2, column=2)
+		self.btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
+		height=2,relief='flat',activebackground="#666666",text="tan", command=lambda: btnClick('tan(' + self.convert_constant)).grid(row=2, column=2)
 		#
-		btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="log",relief='flat',command=lambda:btnClick('log(')).grid(row=2,column=3)
+		self.btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="log",relief='flat',activebackground="#666666",command=lambda:btnClick('log(')).grid(row=2,column=3)
 		# four
-		btn4 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="4",relief='flat', command=lambda: btnClick(4)).grid(row=2, column=4)
+		self.btn4 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="4",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(4)).grid(row=2, column=4)
 		# five
-		btn5 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="5",relief='flat', command=lambda: btnClick(5)).grid(row=2, column=5)
+		self.btn5 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="5",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(5)).grid(row=2, column=5)
 		# six
-		btn6 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="6",relief='flat', command=lambda: btnClick(6)).grid(row=2, column=6)
+		self.btn6 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="6",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(6)).grid(row=2, column=6)
 		# seven
-		btnSub = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="-",relief='flat',command=lambda:btnClick('-')).grid(row=2,column=7)
+		self.btnSub = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="-",relief='flat',activebackground="#4d4d4d",command=lambda:btnClick('-')).grid(row=2,column=7)
 		# outputs what is in self.recall
-		btn_MR = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="MR",relief='flat', command=lambda: memory_recall()).grid(row=2, column=8)
+		self.btn_MR = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="MR",relief='flat',activebackground="#666666", command=lambda: memory_recall()).grid(row=2, column=8)
 		
 		# row 3
 		# sin inverse function
-		btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'asin(')).grid(row=3,column=0)
+		self.btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="sin^-1",relief='flat',activebackground="#666666",command=lambda:btnClick(self.inv_convert_constant + 'asin(')).grid(row=3,column=0)
 		# cos inverse function
-		btn_cos_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="cos^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'acos(')).grid(row=3,column=1)
+		self.btn_cos_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="cos^-1",relief='flat',activebackground="#666666",command=lambda:btnClick(self.inv_convert_constant + 'acos(')).grid(row=3,column=1)
 		# tan inverse function
-		btn_tan_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="tan^-1",relief='flat',command=lambda:btnClick(self.inv_convert_constant + 'atan(')).grid(row=3,column=2)
+		self.btn_tan_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="tan^-1",relief='flat',activebackground="#666666",command=lambda:btnClick(self.inv_convert_constant + 'atan(')).grid(row=3,column=2)
 		# takes the natural log
-		btn_ln = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="ln",relief='flat',command=lambda:btnClick('log1p(')).grid(row=3,column=3) 
+		self.btn_ln = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="ln",relief='flat',activebackground="#666666",command=lambda:btnClick('log1p(')).grid(row=3,column=3)
 		# one
-		btn1 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="1",relief='flat', command=lambda: btnClick(1)).grid(row=3, column=4)
+		self.btn1 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="1",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(1)).grid(row=3, column=4)
 		# two
-		btn2 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="2",relief='flat', command=lambda: btnClick(2)).grid(row=3, column=5)
+		self.btn2 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="2",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(2)).grid(row=3, column=5)
 		# three
-		btn3 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
-		text="3",relief='flat', command=lambda: btnClick(3)).grid(row=3, column=6)
+		self.btn3 = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#4d4d4d', font=('arial', 18), width=2, height=2,
+		text="3",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(3)).grid(row=3, column=6)
 		# addition
-		btn_add = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="+",relief='flat', command=lambda: btnClick('+')).grid(row=3, column=7)
+		self.btn_add = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="+",relief='flat',activebackground="#666666", command=lambda: btnClick('+')).grid(row=3, column=7)
 		# adds current self.expression to self.recall string
-		btn_M_plus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="M+",relief='flat', command=lambda: memory_add()).grid(row=3, column=8)
+		self.btn_M_plus = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text="M+",relief='flat',activebackground="#666666", command=lambda: memory_add()).grid(row=3, column=8)
 		
 		# row 4
 		# factorial function
-		btn_fact = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="n!",relief='flat',command=lambda:btnClick('factorial(')).grid(row=4,column=0)
+		self.btn_fact = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text="n!",relief='flat',activebackground="#666666",command=lambda:btnClick('factorial(')).grid(row=4,column=0)
 		# square function
-		btn_sqr = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text=u"x\u00B2",relief='flat',command=lambda:btnClick('**2')).grid(row=4,column=1) 
+		self.btn_sqr = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
+		text=u"x\u00B2",relief='flat',activebackground="#666666",command=lambda:btnClick('**2')).grid(row=4,column=1)
 		# to the power of function
-		btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="x^y",relief='flat', command=lambda: btnClick('**')).grid(row=4, column=2)
+		self.btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text="x^y",relief='flat',activebackground="#666666", command=lambda: btnClick('**')).grid(row=4, column=2)
 		# stores previous expression as an answer value
-		btn_ans = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
-		text="ans",relief='flat',command=lambda:answer()).grid(row=4, column=3)
+		self.btn_ans = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2, height=2,
+		text="ans",relief='flat',activebackground="#666666",command=lambda:answer()).grid(row=4, column=3)
 		# zero
-		btn_0 = tk.Button(bottom_frame, padx=16, pady=1, bd=5, fg='white',bg = '#4d4d4d', font=('arial', 18),width=7, height=2,
-		text="0",relief='flat', command=lambda: btnClick(0))
-		btn_0.grid(row=4, column=4,columnspan=2)
+		self.btn_0 = tk.Button(bottom_frame, padx=16, pady=1, bd=5, fg='white',bg = '#4d4d4d', font=('arial', 18),width=7, height=2,
+		text="0",relief='flat',activebackground="#4d4d4d", command=lambda: btnClick(0))
+		self.btn_0.grid(row=4, column=4,columnspan=2)
 		# equals button
-		btn_eq = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#ff9980', font=('arial', 18), width=2, height=2,
-		text="=",relief='flat',command=lambda:btnEqual()).grid(row=4, column=6)
+		self.btn_eq = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#ff9980', font=('arial', 18), width=2, height=2,
+		text="=",relief='flat',activebackground="#666666",command=lambda:btnEqual()).grid(row=4, column=6)
 		# decimal to convert to float
-		btn_dec = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text=".",relief='flat', command=lambda: btnClick('.')).grid(row=4, column=7)
+		self.btn_dec = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text=".",relief='flat',activebackground="#666666", command=lambda: btnClick('.')).grid(row=4, column=7)
 		# comma to allow for more than one parameter!
-		btn_comma = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text=",",relief='flat', command=lambda: btnClick(',')).grid(row=4, column=8)
+		self.btn_comma = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
+		text=",",relief='flat',activebackground="#666666", command=lambda: btnClick(',')).grid(row=4, column=8)
 
 		# functions
 		# allows button you click to be put into self.expression
@@ -203,12 +203,11 @@ class Calculator:
 				text_Input.set(self.expression + self.recall)
 		# changes self.convert_constant to a string that allows degree conversion when button is clicked
 		def convert_deg():
-			self.inv_convert_constant = "degrees("
-			self.convert_constant = '(radians('
-		# allows self.convert_constant to be empty so that it defaults back to radians
+			self.btn_Rad["foreground"] = 'white'
+			self.btn_Deg["foreground"] = 'orange'
 		def convert_rad():
-			self.convert_constant = ""
-		# changes self.convert_constant to a string that allows gradian conversion when button is clicked
+			self.btn_Rad["foreground"] = 'orange'
+			self.btn_Deg["foreground"] = 'white'
 		# clears self.expression
 		def btnClearAll():
 			self.expression = ""
