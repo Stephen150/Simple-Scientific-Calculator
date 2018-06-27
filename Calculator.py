@@ -1,6 +1,5 @@
 import tkinter as tk
 from math import *
-
 # used to switch between units of rad, and deg
 convert_constant = 1
 inverse_convert_constant = 1
@@ -11,14 +10,12 @@ def fcos(arg):
 	return cos(arg * convert_constant)
 def ftan(arg):
 	return tan(arg * convert_constant)
-	
 def arcsin(arg):
     return (inverse_convert_constant * (asin(arg)))
 def arccos(arg):
     return (inverse_convert_constant * (acos(arg)))
 def arctan(arg):
     return (inverse_convert_constant * (atan(arg)))
-
 
 class Calculator:
 	def __init__(self, master):
@@ -294,5 +291,4 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
-
 
