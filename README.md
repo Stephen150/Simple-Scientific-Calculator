@@ -2,6 +2,8 @@
 
 This is a basic, semi-minimalist scientific calculator that has a number of essential functions used in science and math classes. 
 
+![sample](https://user-images.githubusercontent.com/30249978/42005780-50b43e32-7a44-11e8-846c-e7a8a4f15dd4.png)
+
 ## Getting Started
 
 There is no need to install any packages, as you only need the built in modules 'math' and 'tkinter'
