@@ -1,14 +1,31 @@
 import tkinter as tk
 from math import *
 
+# used to switch between units of rad, and deg
+convert_constant = 1
+inverse_convert_constant = 1
+
+def fsin(arg):
+	return sin(arg * convert_constant)
+def fcos(arg):
+	return cos(arg * convert_constant)
+def ftan(arg):
+	return tan(arg * convert_constant)
+	
+def arcsin(arg):
+    return (inverse_convert_constant * (asin(arg)))
+def arccos(arg):
+    return (inverse_convert_constant * (acos(arg)))
+def arctan(arg):
+    return (inverse_convert_constant * (atan(arg)))
+
+
 class Calculator:
 	def __init__(self, master):
 		# expression that will be displayed on screen
 		self.expression = ""
 		# be used to store data in memory
 		self.recall = ""
-		# used to switch between units of rad,deg and grad
-		self.convert_constant = 1
 		# self.answer
 		self.sum_up = ""
 		# create string for text input
@@ -113,11 +130,11 @@ class Calculator:
 		self.btn_sin.grid(row=2,column=0)
 		# cos function that returns value from -1 to 1 by default
 		self.btn_cos = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18),width=2, height=2,
-		text="cos",relief='flat',activebackground="#666666", command=lambda: self.btnClick('cos(' + self.convert_constant))
+		text="cos",relief='flat',activebackground="#666666", command=lambda: self.btnClick('fcos('))
 		self.btn_cos.grid(row=2, column=1)
 		# tan function
 		self.btn_tan = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white',bg = '#666666', font=('arial', 18), width=2,
-		height=2,relief='flat',activebackground="#666666",text="tan", command=lambda: self.btnClick('tan(' + self.convert_constant))
+		height=2,relief='flat',activebackground="#666666",text="tan", command=lambda: self.btnClick('ftan('))
 		self.btn_tan.grid(row=2, column=2)
 		#
 		self.btn_log = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
@@ -147,15 +164,15 @@ class Calculator:
 		# row 3
 		# sin inverse function
 		self.btn_sin_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="sin^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick(self.inv_convert_constant + 'asin('))
+		text="sin^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick('arcsin('))
 		self.btn_sin_inverse.grid(row=3,column=0)
 		# cos inverse function
 		self.btn_cos_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="cos^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick(self.inv_convert_constant + 'acos('))
+		text="cos^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick('arccos('))
 		self.btn_cos_inverse.grid(row=3,column=1)
 		# tan inverse function
 		self.btn_tan_inverse = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
-		text="tan^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick(self.inv_convert_constant + 'atan('))
+		text="tan^-1",relief='flat',activebackground="#666666",command=lambda:self.btnClick('arctan('))
 		self.btn_tan_inverse.grid(row=3,column=2)
 		# takes the natural log
 		self.btn_ln = tk.Button(bottom_frame,padx=16,pady=1,bd=4,fg='white',bg = '#666666',font =('arial',18),width=2,height=2,
@@ -226,12 +243,6 @@ class Calculator:
 		self.expression = self.expression[:-1]
 		self.text_Input.set(self.expression)
 		# adds in a negative sign
-
-
-	def fsin(self,arg):
-		return sin(arg * self.convert_constant)
-
-			
 	def change_signs(self):
 		self.expression = self.expression + '-'
 		self.text_Input.set(self.expression)
@@ -253,11 +264,17 @@ class Calculator:
 			self.text_Input.set(self.expression + self.recall)
 		# changes self.convert_constant to a string that allows degree conversion when button is clicked
 	def convert_deg(self):
-		self.convert_constant = pi/180
+		global convert_constant
+		global inverse_convert_constant
+		convert_constant = pi/180
+		inverse_convert_constant = 180/pi
 		self.btn_Rad["foreground"] = 'white'
 		self.btn_Deg["foreground"] = 'orange'
 	def convert_rad(self):
-		self.convert_constant = 1
+		global convert_constant
+		global inverse_convert_constant
+		convert_constant = 1
+		inverse_convert_constant = 1
 		self.btn_Rad["foreground"] = 'orange'
 		self.btn_Deg["foreground"] = 'white'
 	# clears self.expression
@@ -277,6 +294,5 @@ root.title("Simple Scientific Calculator")
 root.geometry("650x490+50+50")
 root.resizable(False,False)
 root.mainloop()
-
 
 
