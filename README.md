@@ -2,7 +2,7 @@
 
 This is a basic, semi-minimalist scientific calculator that has a number of essential functions used in science and math classes. 
 
-![sample](https://user-images.githubusercontent.com/30249978/42005780-50b43e32-7a44-11e8-846c-e7a8a4f15dd4.png)
+![rsz_sample](https://user-images.githubusercontent.com/30249978/42005862-a2c5841a-7a44-11e8-965b-d592c2d01d2a.png)
 
 ## Getting Started
 
