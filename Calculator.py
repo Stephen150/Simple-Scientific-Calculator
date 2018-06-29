@@ -51,7 +51,7 @@ class Calculator:
         self.btn_exp = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, relief='flat', text="exp", activebackground="#666666",command=lambda: self.btnClick('exp('))
         self.btn_exp.grid(row=0, column=2)
         # constant pi
-        self.btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2, relief='flat', activebackground="#666666", text="π",command=lambda: self.btnClick('pi'))
+        self.btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2, relief='flat', activebackground="#666666", text="ฯ€",command=lambda: self.btnClick('pi'))
         self.btn_pi.grid(row=0, column=3)
         # clears self.expression
         self.btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, text="C", relief='flat', activebackground="#666666",command=self.btnClearAll)
@@ -76,7 +76,7 @@ class Calculator:
         self.btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, text="Rad", relief='flat', foreground='orange', activeforeground='orange',activebackground="#666666", command=self.convert_rad)
         self.btn_Rad.grid(row=1, column=1)
         # changes trig function outputs to gradians
-        self.btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="x√  ", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**(1/'))
+        self.btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="xโ  ", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**(1/'))
         self.btn_root_of.grid(row=1, column=2)
         # takes the absolute value of an expression
         self.btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, relief='flat', text="abs", activebackground="#666666",command=lambda: self.btnClick('abs' + '('))
@@ -201,7 +201,8 @@ class Calculator:
     # uses whatever is stored in memory_recall
     def answer(self):
         self.answer = self.sum_up
-        self.text_Input.set(self.expression + self.answer)
+        self.expression = self.expression + self.answer
+        self.text_Input.set(self.expression)
     # uses whatever is stored in memory_recall
     def memory_recall(self):
         if self.expression == "":
@@ -231,7 +232,7 @@ class Calculator:
     def btnEqual(self):
         self.sum_up = str(eval(self.expression))
         self.text_Input.set(self.sum_up)
-        self.expression = ""
+        self.expression = self.sum_up
 
 # tkinter layout
 root = tk.Tk()
