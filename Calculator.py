@@ -75,9 +75,9 @@ class Calculator:
         # changes trig function outputs to default back to radians
         self.btn_Rad = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, text="Rad", relief='flat', foreground='orange', activeforeground='orange',activebackground="#666666", command=self.convert_rad)
         self.btn_Rad.grid(row=1, column=1)
-        # changes trig function outputs to gradians
-        self.btn_root_of = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="xโ  ", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**(1/'))
-        self.btn_root_of.grid(row=1, column=2)
+        # cubes a value
+        self.cube = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="x^3", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**3'))
+        self.cube.grid(row=1, column=2)
         # takes the absolute value of an expression
         self.btn_abs = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2,height=2, relief='flat', text="abs", activebackground="#666666",command=lambda: self.btnClick('abs' + '('))
         self.btn_abs.grid(row=1, column=3)
@@ -96,7 +96,6 @@ class Calculator:
         # 'memory clear' button. Wipes self.recall to an empty string
         self.btn_MC = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="MC", relief='flat', activebackground="#666666",command=self.memory_clear)
         self.btn_MC.grid(row=1, column=8)
-
         # row 2
         # sin function that returns value from -1 to 1 by default
         self.btn_sin = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="sin", relief='flat', activebackground="#666666",command=lambda: self.btnClick('fsin('))
@@ -125,16 +124,15 @@ class Calculator:
         # outputs what is in self.recall
         self.btn_MR = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="MR", relief='flat', activebackground="#666666",command=self.memory_recall)
         self.btn_MR.grid(row=2, column=8)
-
         # row 3
         # sin inverse function
-        self.btn_sin_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="sin^-1", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arcsin('))
+        self.btn_sin_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="arcsin", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arcsin('))
         self.btn_sin_inverse.grid(row=3, column=0)
         # cos inverse function
-        self.btn_cos_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="cos^-1", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arccos('))
+        self.btn_cos_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="arccos", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arccos('))
         self.btn_cos_inverse.grid(row=3, column=1)
         # tan inverse function
-        self.btn_tan_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="tan^-1", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arctan('))
+        self.btn_tan_inverse = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666',font=('arial', 18), width=2, height=2,text="arctan", relief='flat', activebackground="#666666",command=lambda: self.btnClick('arctan('))
         self.btn_tan_inverse.grid(row=3, column=2)
         # takes the natural log
         self.btn_ln = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="ln", relief='flat', activebackground="#666666",command=lambda: self.btnClick('log1p('))
@@ -159,7 +157,7 @@ class Calculator:
         self.btn_fact = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="n!", relief='flat', activebackground="#666666",command=lambda: self.btnClick('factorial('))
         self.btn_fact.grid(row=4, column=0)
         # square function
-        self.btn_sqr = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text=u"x\u00B2", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**2'))
+        self.btn_sqr = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="x^2", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**2'))
         self.btn_sqr.grid(row=4, column=1)
         # to the power of function
         self.btn_power = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),width=2, height=2,text="x^y", relief='flat', activebackground="#666666",command=lambda: self.btnClick('**'))
@@ -182,8 +180,12 @@ class Calculator:
     # functions
     # allows button you click to be put into self.expression
     def btnClick(self, expression_val):
-        self.expression = self.expression + str(expression_val)
-        self.text_Input.set(self.expression)
+        if (len(self.expression) >= 23):
+            self.expression = self.expression
+            self.text_Input.set(self.expression)
+        else:
+            self.expression = self.expression + str(expression_val)
+            self.text_Input.set(self.expression)
     # clears last item in string
     def btnClear1(self):
         self.expression = self.expression[:-1]
@@ -233,7 +235,6 @@ class Calculator:
         self.sum_up = str(eval(self.expression))
         self.text_Input.set(self.sum_up)
         self.expression = self.sum_up
-
 # tkinter layout
 root = tk.Tk()
 b = Calculator(root)
