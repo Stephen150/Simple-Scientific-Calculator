@@ -13,7 +13,7 @@ There is no need to install any packages, as you only need the built in modules 
 On the module level, the 'math' and 'tkinter' module is already imported and included in the code.
 
 ```
-import Tkinter as tk
+import tkinter as tk
 from math import *
 ```
 
