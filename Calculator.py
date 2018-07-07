@@ -74,7 +74,7 @@ class Calculator:
         # constant pi
         self.btn_pi = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),
                                 width=2, height=2, relief='flat',
-                                activebackground="#666666", text="π", command=lambda: self.btn_click('pi'))
+                                activebackground="#666666", text="ฯ€", command=lambda: self.btn_click('pi'))
         self.btn_pi.grid(row=0, column=3)
         # clears self.expression
         self.btn_clear = tk.Button(bottom_frame, padx=16, pady=1, bd=4, fg='white', bg='#666666', font=('arial', 18),
