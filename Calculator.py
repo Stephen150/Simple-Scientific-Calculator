@@ -1,5 +1,6 @@
 import tkinter as tk
 from math import *
+
 # used to switch between units of rad, and deg
 convert_constant = 1
 inverse_convert_constant = 1
@@ -13,20 +14,21 @@ btn_params = {
     'font': ('arial', 18),
     'width': 2,
     'height': 2,
-    'relief':'flat',
-    'activebackground':"#666666"
+    'relief': 'flat',
+    'activebackground': "#666666"
 }
 
+
 def fsin(arg):
-    return sin(arg*convert_constant)
+    return sin(arg * convert_constant)
 
 
 def fcos(arg):
-    return cos(arg*convert_constant)
+    return cos(arg * convert_constant)
 
 
 def ftan(arg):
-    return tan(arg*convert_constant)
+    return tan(arg * convert_constant)
 
 
 def arcsin(arg):
@@ -68,7 +70,6 @@ class Calculator:
                                bg='#666666', fg='white', textvariable=self.text_input, width=60, bd=4, justify='right')
         txt_display.pack()
 
-
         # row 0
         # left bracket button
         self.btn_left_brack = tk.Button(bottom_frame, **btn_params, text="(", command=lambda: self.btn_click('('))
@@ -95,14 +96,16 @@ class Calculator:
         self.btn_div = tk.Button(bottom_frame, **btn_params, text="/", command=lambda: self.btn_click('/'))
         self.btn_div.grid(row=0, column=7)
         # square root
-        self.btn_sqrt = tk.Button(bottom_frame, **btn_params, text="sqrt",command=lambda: self.btn_click('sqrt('))
+        self.btn_sqrt = tk.Button(bottom_frame, **btn_params, text="sqrt", command=lambda: self.btn_click('sqrt('))
         self.btn_sqrt.grid(row=0, column=8)
         # row 1
         # changes trig function outputs to degrees
-        self.btn_Deg = tk.Button(bottom_frame, **btn_params, activeforeground='orange', text="Deg", command=self.convert_deg)
+        self.btn_Deg = tk.Button(bottom_frame, **btn_params, activeforeground='orange', text="Deg",
+                                 command=self.convert_deg)
         self.btn_Deg.grid(row=1, column=0)
         # changes trig function outputs to default back to radians
-        self.btn_Rad = tk.Button(bottom_frame, **btn_params, foreground='orange', activeforeground='orange',text="Rad", command=self.convert_rad)
+        self.btn_Rad = tk.Button(bottom_frame, **btn_params, foreground='orange', activeforeground='orange', text="Rad",
+                                 command=self.convert_rad)
         self.btn_Rad.grid(row=1, column=1)
         # cubes a value
         self.cube = tk.Button(bottom_frame, **btn_params, text="x^3", command=lambda: self.btn_click('**3'))
@@ -119,7 +122,7 @@ class Calculator:
         self.btn_8.configure(activebackground="#4d4d4d", bg='#4d4d4d')
         self.btn_8.grid(row=1, column=5)
         # nine
-        self.btn_9 = tk.Button(bottom_frame, **btn_params, text = "9", command=lambda: self.btn_click(9))
+        self.btn_9 = tk.Button(bottom_frame, **btn_params, text="9", command=lambda: self.btn_click(9))
         self.btn_9.configure(activebackground="#4d4d4d", bg='#4d4d4d')
         self.btn_9.grid(row=1, column=6)
         # multiplication
@@ -130,7 +133,7 @@ class Calculator:
         self.btn_MC.grid(row=1, column=8)
         # row 2
         # sin function that returns value from -1 to 1 by default
-        self.btn_sin = tk.Button(bottom_frame, **btn_params, text = "sin", command=lambda: self.btn_click('fsin('))
+        self.btn_sin = tk.Button(bottom_frame, **btn_params, text="sin", command=lambda: self.btn_click('fsin('))
         self.btn_sin.grid(row=2, column=0)
         # cos function that returns value from -1 to 1 by default
         self.btn_cos = tk.Button(bottom_frame, **btn_params, text="cos", command=lambda: self.btn_click('fcos('))
@@ -139,38 +142,41 @@ class Calculator:
         self.btn_tan = tk.Button(bottom_frame, **btn_params, text="tan", command=lambda: self.btn_click('ftan('))
         self.btn_tan.grid(row=2, column=2)
         #
-        self.btn_log = tk.Button(bottom_frame, **btn_params, text = "log", command=lambda: self.btn_click('log('))
+        self.btn_log = tk.Button(bottom_frame, **btn_params, text="log", command=lambda: self.btn_click('log('))
         self.btn_log.grid(row=2, column=3)
         # four
-        self.btn_4 = tk.Button(bottom_frame, **btn_params, text = "4", command=lambda: self.btn_click(4))
+        self.btn_4 = tk.Button(bottom_frame, **btn_params, text="4", command=lambda: self.btn_click(4))
         self.btn_4.configure(activebackground="#4d4d4d", bg='#4d4d4d')
         self.btn_4.grid(row=2, column=4)
         # five
-        self.btn_5 = tk.Button(bottom_frame, **btn_params, text = "5", command=lambda: self.btn_click(5))
+        self.btn_5 = tk.Button(bottom_frame, **btn_params, text="5", command=lambda: self.btn_click(5))
         self.btn_5.configure(activebackground="#4d4d4d", bg='#4d4d4d')
         self.btn_5.grid(row=2, column=5)
         # six
-        self.btn_6 = tk.Button(bottom_frame, **btn_params, text = "6", command=lambda: self.btn_click(6))
+        self.btn_6 = tk.Button(bottom_frame, **btn_params, text="6", command=lambda: self.btn_click(6))
         self.btn_6.configure(activebackground="#4d4d4d", bg='#4d4d4d')
         self.btn_6.grid(row=2, column=6)
         # subtraction
-        self.btnSub = tk.Button(bottom_frame, **btn_params, text = "-", command=lambda: self.btn_click('-'))
+        self.btnSub = tk.Button(bottom_frame, **btn_params, text="-", command=lambda: self.btn_click('-'))
         self.btnSub.grid(row=2, column=7)
         # outputs what is in self.recall
         self.btn_MR = tk.Button(bottom_frame, **btn_params, text="MR", command=self.memory_recall)
         self.btn_MR.grid(row=2, column=8)
         # row 3
         # sin inverse function
-        self.btn_sin_inverse = tk.Button(bottom_frame, **btn_params, text="arcsin", command=lambda: self.btn_click('arcsin('))
+        self.btn_sin_inverse = tk.Button(bottom_frame, **btn_params, text="arcsin",
+                                         command=lambda: self.btn_click('arcsin('))
         self.btn_sin_inverse.grid(row=3, column=0)
         # cos inverse function
-        self.btn_cos_inverse = tk.Button(bottom_frame, **btn_params, text="arccos", command=lambda: self.btn_click('arccos('))
+        self.btn_cos_inverse = tk.Button(bottom_frame, **btn_params, text="arccos",
+                                         command=lambda: self.btn_click('arccos('))
         self.btn_cos_inverse.grid(row=3, column=1)
         # tan inverse function
-        self.btn_tan_inverse = tk.Button(bottom_frame, **btn_params, text="arctan", command=lambda: self.btn_click('arctan('))
+        self.btn_tan_inverse = tk.Button(bottom_frame, **btn_params, text="arctan",
+                                         command=lambda: self.btn_click('arctan('))
         self.btn_tan_inverse.grid(row=3, column=2)
         # takes the natural log
-        self.btn_ln = tk.Button(bottom_frame,**btn_params, text="ln", command=lambda: self.btn_click('log1p('))
+        self.btn_ln = tk.Button(bottom_frame, **btn_params, text="ln", command=lambda: self.btn_click('log1p('))
         self.btn_ln.grid(row=3, column=3)
         # one
         self.btn_1 = tk.Button(bottom_frame, **btn_params, text="1", command=lambda: self.btn_click(1))
@@ -209,7 +215,7 @@ class Calculator:
         self.btn_0.grid(row=4, column=4, columnspan=2)
         # equals button
         self.btn_eq = tk.Button(bottom_frame, **btn_params, text="=", command=self.btn_equal)
-        self.btn_eq.configure(bg='#ff9980',activebackground = '#ff9980')
+        self.btn_eq.configure(bg='#ff9980', activebackground='#ff9980')
         self.btn_eq.grid(row=4, column=6)
         # decimal to convert to float
         self.btn_dec = tk.Button(bottom_frame, **btn_params, text=".", command=lambda: self.btn_click('.'))
@@ -217,6 +223,7 @@ class Calculator:
         # comma to allow for more than one parameter!
         self.btn_comma = tk.Button(bottom_frame, **btn_params, text=",", command=lambda: self.btn_click(','))
         self.btn_comma.grid(row=4, column=8)
+
     # functions
     # allows button you click to be put into self.expression
 
@@ -227,30 +234,36 @@ class Calculator:
         else:
             self.expression = self.expression + str(expression_val)
             self.text_input.set(self.expression)
+
     # clears last item in string
 
     def btn_clear1(self):
         self.expression = self.expression[:-1]
         self.text_input.set(self.expression)
+
     # adds in a negative sign
 
     def change_signs(self):
         self.expression = self.expression + '-'
         self.text_input.set(self.expression)
+
     # clears memory_recall
 
     def memory_clear(self):
         self.recall = ""
+
     # adds whatever is on the screen to self.recall
 
     def memory_add(self):
         self.recall = self.recall + '+' + self.expression
+
     # uses whatever is stored in memory_recall
 
     def answer(self):
         self.answer = self.sum_up
         self.expression = self.expression + self.answer
         self.text_input.set(self.expression)
+
     # uses whatever is stored in memory_recall
 
     def memory_recall(self):
@@ -258,6 +271,7 @@ class Calculator:
             self.text_input.set('0' + self.expression + self.recall)
         else:
             self.text_input.set(self.expression + self.recall)
+
     # changes self.convert_constant to a string that allows degree conversion when button is clicked
 
     def convert_deg(self):
@@ -275,20 +289,22 @@ class Calculator:
         inverse_convert_constant = 1
         self.btn_Rad["foreground"] = 'orange'
         self.btn_Deg["foreground"] = 'white'
+
     # clears self.expression
 
     def btn_clear_all(self):
         self.expression = ""
         self.text_input.set("")
+
     # converts self.expression into a mathematical expression and evaluates it
 
     def btn_equal(self):
         self.sum_up = str(eval(self.expression))
         self.text_input.set(self.sum_up)
         self.expression = self.sum_up
+
+
 # tkinter layout
-
-
 root = tk.Tk()
 b = Calculator(root)
 root.title("Simple Scientific Calculator")
