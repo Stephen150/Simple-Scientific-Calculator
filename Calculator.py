@@ -108,7 +108,7 @@ class Calculator:
                                  command=self.convert_rad)
         self.btn_Rad.grid(row=1, column=1)
         # cubes a value
-        self.cube = tk.Button(bottom_frame, **btn_params, text="x^3", command=lambda: self.btn_click('**3'))
+        self.cube = tk.Button(bottom_frame, **btn_params, text=u"x\u00B3", command=lambda: self.btn_click('**3'))
         self.cube.grid(row=1, column=2)
         # takes the absolute value of an expression
         self.btn_abs = tk.Button(bottom_frame, **btn_params, text="abs", command=lambda: self.btn_click('abs' + '('))
@@ -164,15 +164,15 @@ class Calculator:
         self.btn_MR.grid(row=2, column=8)
         # row 3
         # sin inverse function
-        self.btn_sin_inverse = tk.Button(bottom_frame, **btn_params, text="arcsin",
+        self.btn_sin_inverse = tk.Button(bottom_frame, **btn_params, text=u"sin-\u00B9",
                                          command=lambda: self.btn_click('arcsin('))
         self.btn_sin_inverse.grid(row=3, column=0)
         # cos inverse function
-        self.btn_cos_inverse = tk.Button(bottom_frame, **btn_params, text="arccos",
+        self.btn_cos_inverse = tk.Button(bottom_frame, **btn_params, text=u"cos-\u00B9",
                                          command=lambda: self.btn_click('arccos('))
         self.btn_cos_inverse.grid(row=3, column=1)
         # tan inverse function
-        self.btn_tan_inverse = tk.Button(bottom_frame, **btn_params, text="arctan",
+        self.btn_tan_inverse = tk.Button(bottom_frame, **btn_params, text=u"tan-\u00B9",
                                          command=lambda: self.btn_click('arctan('))
         self.btn_tan_inverse.grid(row=3, column=2)
         # takes the natural log
@@ -198,10 +198,10 @@ class Calculator:
         self.btn_M_plus.grid(row=3, column=8)
         # row 4
         # factorial function
-        self.btn_fact = tk.Button(bottom_frame, **btn_params, text="n+", command=lambda: self.btn_click('factorial('))
+        self.btn_fact = tk.Button(bottom_frame, **btn_params, text="n!", command=lambda: self.btn_click('factorial('))
         self.btn_fact.grid(row=4, column=0)
         # square function
-        self.btn_sqr = tk.Button(bottom_frame, **btn_params, text="x^2", command=lambda: self.btn_click('**2'))
+        self.btn_sqr = tk.Button(bottom_frame, **btn_params, text=u"x\u00B2", command=lambda: self.btn_click('**2'))
         self.btn_sqr.grid(row=4, column=1)
         # to the power of function
         self.btn_power = tk.Button(bottom_frame, **btn_params, text="x^y", command=lambda: self.btn_click('**'))
