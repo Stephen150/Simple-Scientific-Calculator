@@ -21,7 +21,7 @@ from math import *
 
 Download any Python 3 IDE and run the code, or you can clone/download it from the homepage of the project.
 
-You can also access the .exe file through my Google Drive: https://drive.google.com/open?id=1WuVHdyZn1jBV_BJ19OSC-rS9FQB_lzpk
+You can also access the .exe file through my Google Drive: https://drive.google.com/open?id=16yd4u12H9BKFE-UGScjb6gZPKRNfDrac
 
 ## Deployment
 
